@@ -5,17 +5,18 @@ before_cache:
 - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
-  - $HOME/.gradle/caches/
-  - $HOME/.gradle/wrapper/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 before_deploy:
-  - ./gradlew releaseZip
+- "./gradlew releaseZip"
 deploy:
-  provider: releases
+  provider: heroku
   api_key:
-    secure: e8RACm16/fFb0thjIN7/qUTAIhvTYrCbQ6LJiy2hv8Mn5rwkDnVPwTiGqBcvB/AuuQz+kLfg5KttyImW96ElIAQfDoHNdlEdOAyX986Qhd3aaiyW25LnYwws+m1pv5qgh8YaKPoNkWgegMNkY/+ZiwAXnxPwh51h+4tn/dGVy0jw+t8z70R4SKxJVuuoau8q45Vb5LMPFQ5hGPn7uVCrTQhMlzFr7idM5mUU32GR3qgm1sZs8xsM0Jz2RxGjBzld3KEcmU8X2x3+sJcHD4TQ7impuv1oubOwgkuQ5DBeXWpobSYeOF96ToRxTeib0X3J0hb5afHv+T1hOeWG82j365SoFLjfoeAaaQpabmstnPC19u9GprnHWqGZ595+awXRP4Ik3LofJ0Jrd+V4iHBkIoP2l9H1PzOFbh5hvqyPWhKncNfbRS8jNlZyx/wOAu+OLi2jdB1VmKRvmEPniyjmZIwHfQxPVCDab0cvdPxtNK+5JUzsqzRMMCpLX9spMK/mf+tqlA+mZmVYiw0wdiVNPZaZ+HIce9JxBjrxJtNpRCY87JKRGxubwdqgkxvQdNCkviomtMcfx3mz0aM2TXddLj2aJWWs0uMacyChZTD0O7qKhRptkEqn7faBqT8C2GOatkSTK/P3yZV8Vy8eKYtCRatLv3pM2OzKUrvCEOeHIAc=
-  file_glob: true
-  file: "./build/libs/JAlgoArena-Eureka-*.zip"
-  skip_cleanup: true
+   secure: "miMImaECdCUEKtNBR479KE9kk10RXThQLCiPjrz5qEbF88HMKxODuKsgbre9DSWLbNt7L+d1kj/m/SfzYk/W42458QKiZQVVpCXYFvGmjYKilantX3hva+iU96+OyGB0dtaTpjh7QD2P6OVnR78FpDVhegRXpv9C0LbLIECOzdCCuWHmoliPLd2sh7mu81o8c17YVVCgQTdKOHzn0H7LTNjuOjHZBu1TkegXonWngmB5Uw4EDHlKuOllu3S3T3BO+pSIOX+20B/BEZM/Oor5dPGoAOitKHwqQgB8l0fdmpwFjIvIwSIASQ0Riursx9sKnJwUMvjDBtNqe7HgFuZWdsNSbS2Wuksn8/pTckPZ9b9bHQS4KvezeA21/TVqpQ1NT0MqmQYTwWb43A1kOgFV5w0Xf7mZ6NAmq2Btilxg8h55m4ZZQRNNTiPA0nISuHGjh2AZhLGgFNYQrT6XuAqUAEiBmywNx60YDBX7yG6ed9TrWxXendjXMbTr48nCXhZrr+SROlJezrTSko2SniTB1sN+s+X+MwQeMn5TYIkatxKccYPCIBxzXpddOLalyQ1hKCxlg8OG3rC2tg5r9IzxEh6P9Nwq/cja3x6r0XpX5k3eQwNs0JqoFKTCFrAIN+4A+5X5H+otnAs9rYZvWr7tnYOgDvI5rz8KhcvAV57WAyU=" 
+  app: ksiazekm-jaa-eureka
   on:
     repo: ksiazekm/JAlgoArena-Eureka
     tags: true
+env:
+  global:
+    secure: R1Uzojydx9zEKtKjBXSC5z/98yu4xKvrgtSKpAg4dp+Zp/V85+pCk9f89wrnl/dt2dCCNO3fGC2ggQ8rCosaSyRKoC2RbwB0bv+0eqmJFT8uqbXRFwYCOHkfPbkBf/MKgZfG53EhWLG/DnIaVegewKgHonWyy7VRKf9ATh5EPsY4pCLc1dUdCOreXK3d1VG1plSLrbNeniV5qdKfDjt98rJ2lYxqyC3E49juJ10P9MZ6xe1exRpwN5bUAN0CCx3172Qsy1RjX1fSoGJzy8Ii/MPs1bDLeWcs6D2KCPI6oaEkzFacJvZqAsOiIeT3D3mRXKIRAzxQdV63Mx8sLAyrRKXOBSgz1N1M/jV1LG26mnDPcITaZSblliMiPcf58Ttjv+t5Y2waVzzFypCStu4JwLVTfA26i3Qc9Qd+IgJ+Yj7QMNZC6YuPcGPXYKlAw2KZ/hCpjzUNP5Wj5cGu2XpX6QzUUjsHEE522KhTMFv8DrGq0cCacLQmRcFGPKRpWf3XPY2NQPKrlRF0d/p6vCWUL723lc8js2fze5sr321t8PiCaLJKboqRdIOVgdU/gWfdfwcxtBn3/XsCKjZDkNrUUYxCZ2iIoYLA6bKsYTXRFvI7Frq1SeZ1l5YWE3HffqjiHUrCZj6X8lsTF2dHeTm/v+45sugntbuOFfKfRO92uBo=
